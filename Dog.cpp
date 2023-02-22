@@ -1,9 +1,13 @@
 //
-// Created by User on 21.02.2023.
+//  Dog.cpp
+//  spring'23 - assignment #1
+//
+//  Created by Angela Choi on 22/02/23.
 //
 
-#include "Dog.h"
+#include "Dog.hpp"
 #include <iostream>
+#include <string>
 using namespace std;
 
 Dog::Dog(){}
@@ -58,52 +62,42 @@ string Dog::getColor() {
     return color;
 }
 
-//creating an object(?)
-Dog myDog;
-
 //member functions - details:
 
 void Dog::setDetails() {
-    string theName;
-    cin >> theName;
-    myDog.setName(theName);
-
-    string theBreed;
-    getline(cin, theBreed);
-    myDog.setBreed(theBreed);
-
-    int theEnergy;
-    cin >> theEnergy;
-    myDog.setEnergy(theEnergy);
-
-    int theAge;
-    cin >> theAge;
-    myDog.setAge(theAge);
-
-    float theSize;
-    cin >> theSize;
-    myDog.setSize(theSize);
-
-    string theColor;
-    cin >> theColor;
-    myDog.setColor(theColor);
+    string n;
+    getline(cin, n);
+    setName(n);
+    string b;
+    getline(cin, b);
+    setBreed(b);
+    cin >> energy;
+    cin.ignore();
+    cin >> age;
+    cin.ignore();
+    cin >> size;
+    cin.ignore();
+    cin >> color;
+    cin.ignore();
+    
+   
 }
 
 void Dog::printDetails() {
-    cout << myDog.getName() << endl;
-    cout << myDog.getBreed() << endl;
-    cout << myDog.getEnergy() << endl;
-    cout << myDog.getAge() << endl;
-    cout << myDog.getSize() << endl;
-    cout << myDog.getColor() << endl;
+    cout << name << endl;
+    cout << breed << endl;
+    cout << energy << endl;
+    cout << age << endl;
+    cout << size << endl;
+    cout << color << endl;
 }
 
 
 void Dog::walk(int minutes) {
-    if(energy <= 0) {cout << energy << "% - " << name << ": Dog needs some sleep!" << endl;}
     minutes *=2;
     energy -= minutes;
-    cout << energy << "% - " << name << endl;
+    if(energy <= 0) {cout << energy << "% - " << name << ": Dog needs some sleep!" << endl;}
+    else cout << energy << "% - " << name << endl;
 }
 
 void Dog::sleep(int minutes) {
